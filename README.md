@@ -19,8 +19,8 @@ It monitors connections/disconnections and displays a dynamic **OSD (On-Screen D
 
 1. Clone the repository:
    ```bash
-   git clone git clone https://github.com/ToFpon/Bluetooth-Notification-and-Volume-OSD-for-GNOME.git
-   cd Bluetooth-Notification-and-Volume-OSD-for-GNOME
+   git clone https://github.com/ToFpon/Bluetooth-Notification-and-Volume-OSD-for-GNOME.git  ~/bt-osd
+   cd bt-osd
    
 2. Lancez l'installateur :
    ```bash
