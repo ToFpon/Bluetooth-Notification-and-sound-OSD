@@ -23,9 +23,8 @@ It monitors connections/disconnections and displays a dynamic **OSD (On-Screen D
    ```bash
    git clone [https://github.com/ToFpon/bt-osd.git](https://github.com/ToFpon/bt-osd.git)
    cd bt-osd
-   ```
+
 2. Lancez l'installateur :
    ```bash
    chmod +x install.sh
    ./install.sh
-```
