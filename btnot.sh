@@ -9,23 +9,30 @@ SCHEMA_PATH="$HOME/.local/share/gnome-shell/extensions/custom-osd@neuromorph/sch
 # Nettoyage au démarrage
 rm -f "$BT_NAME_FILE" "$BT_ICON_FILE"
 
-# --- 1. SURVEILLANCE DU VOLUME (OSD Dynamique) ---
+# --- 1. SURVEILLANCE DU VOLUME (OSD Dynamique avec filtre anti-flood) ---
 (
+    LAST_VOL="-1" # Mémoire pour éviter le flood
     pactl subscribe | while read -r event; do
-        # On ne traite l'événement QUE SI un appareil BT est connecté
-        # (C'est-à-dire si notre fichier temporaire existe)
         if [[ -f "$BT_NAME_FILE" ]]; then
             if echo "$event" | grep -Ei -q "changement|change" && echo "$event" | grep -Ei -q "destination|sink|carte|card"; then
                 
+                # Récupération du volume actuel
                 vol_percent=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '[0-9]+(?=% )' | head -1)
                 [[ -z "$vol_percent" ]] && vol_percent=0
-                level=$(echo "scale=2; $vol_percent / 100" | bc)
                 
-                display_name=$(cat "$BT_NAME_FILE" 2>/dev/null || echo "Volume")
-                display_icon=$(cat "$BT_ICON_FILE" 2>/dev/null || echo "audio-volume-medium-symbolic")
-                
-                GSETTINGS_SCHEMA_DIR="$SCHEMA_PATH" gsettings set org.gnome.shell.extensions.custom-osd showosd \
-                    "$RANDOM,$display_icon,$display_name,$level"
+                # --- LE FILTRE : On n'affiche QUE si le volume a vraiment changé ---
+                if [[ "$vol_percent" != "$LAST_VOL" ]]; then
+                    level=$(echo "scale=2; $vol_percent / 100" | bc)
+                    
+                    display_name=$(cat "$BT_NAME_FILE" 2>/dev/null || echo "Volume")
+                    display_icon=$(cat "$BT_ICON_FILE" 2>/dev/null || echo "audio-volume-medium-symbolic")
+                    
+                    GSETTINGS_SCHEMA_DIR="$SCHEMA_PATH" gsettings set org.gnome.shell.extensions.custom-osd showosd \
+                        "$RANDOM,$display_icon,$display_name,$level"
+                    
+                    # On met à jour la mémoire
+                    LAST_VOL="$vol_percent"
+                fi
             fi
         fi
     done
