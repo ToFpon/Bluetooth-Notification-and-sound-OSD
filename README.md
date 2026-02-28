@@ -12,14 +12,15 @@ It monitors connections/disconnections and displays a dynamic **OSD (On-Screen D
 
 ## 🛠 Prerequisites
 - **GNOME Shell**
-- **Custom-OSD extension**: [neuromorph/custom-osd](https://extensions.gnome.org/extension/6142/custom-osd/) (essential for visual display).
-- **Dependencies**: `pulseaudio-utils` (PulseAudio/Pipewire), `bluetoothctl`, `bc`.
-
+- **Custom-OSD extension**: [neuromorph/custom-osd](https://github.com/neuromorph/custom-osd) (essential for visual display).
+- **Dependencies**: 
+   ```bash
+    sudo apt install pulseaudio-utils bluetoothctl bc
 ## 🚀 Quick installation
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/ToFpon/Bluetooth-Notification-and-Volume-OSD-for-GNOME.git  ~/bt-osd
+   git clone [https://github.com/ToFpon/bt-osd.git](https://github.com/ToFpon/bt-osd.git)
    cd bt-osd
    
 2. Lancez l'installateur :
