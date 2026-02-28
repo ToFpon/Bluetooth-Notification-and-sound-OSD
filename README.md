@@ -13,7 +13,7 @@ It monitors connections/disconnections and displays a dynamic **OSD (On-Screen D
 ## 🛠 Prerequisites
 - **GNOME Shell**
 - **Custom-OSD extension**: [neuromorph/custom-osd](https://extensions.gnome.org/extension/6142/custom-osd/) (essential for visual display).
-- **Dependencies**: `pactl` (PulseAudio/Pipewire), `bluetoothctl`, `bc`.
+- **Dependencies**: `pulseaudio-utils` (PulseAudio/Pipewire), `bluetoothctl`, `bc`.
 
 ## 🚀 Quick installation
 
