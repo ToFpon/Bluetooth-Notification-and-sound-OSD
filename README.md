@@ -1,4 +1,4 @@
-# 🎧 BT-OSD (Lola) pour GNOME
+# 🎧 Bluetooth Notification and volume OSD for GNOME
 
 Un script Bash léger qui apporte une intégration "Premium" pour vos périphériques Bluetooth sous GNOME. 
 
@@ -19,10 +19,10 @@ Il surveille les connexions/déconnexions et affiche un **OSD (On-Screen Display
 
 1. Clonez le dépôt :
    ```bash
-   git clone [https://github.com/TON_USER/bt-osd.git](https://github.com/TON_USER/bt-osd.git)
+   git clone [https://github.com/ToFpon/bt-osd.git](https://github.com/ToFpon/bt-osd.git)
    cd bt-osd
    
 2. Lancez l'installateur :
-  ```bash
-  chmod +x install.sh
-  ./install.sh
+   ```bash
+   chmod +x install.sh
+   ./install.sh
